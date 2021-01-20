@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View job</title>
+</head>
+
+<body>
+    <header>
+        <h3>Hello {{logged_in_user.first_name}}!</h3>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </header>
+    <h2>{{job.title}}</h2>
+    <div>
+        <p>{{job.description}}</p>
+        <p>Location: {{job.location}}</p>
+        <p>Posted by: {{job.user.first_name}}</p>
+        <p>Posted on: {{job.created_at}}</p>
+        <p>Categories:
+            {% for cat in real_categories %}
+            {{cat.title}},
+            {% endfor %}
+        </p>
+
+    </div>
+
+    <a href="/take_job/{{job.id}}">Add to my jobs</a>
+</body>
+
+</html>
